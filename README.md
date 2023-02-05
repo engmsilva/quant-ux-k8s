@@ -48,7 +48,7 @@ NAME            CLASS     HOSTS            ADDRESS        PORTS     AGE
 nginx-ingress   nginx     quant-ux.local   192.168.49.2   80        13h
 ```
 
-Add the IP from the **ADDRESS** column in the /etc/hosts file to resolve name to address [http://quant-ux.local](http://quant-ux.local):
+Add the IP from the **ADDRESS** column in the `/etc/hosts` file to resolve name to address [http://quant-ux.local](http://quant-ux.local):
 
 ```
 192.168.49.2 quant-ux.local
