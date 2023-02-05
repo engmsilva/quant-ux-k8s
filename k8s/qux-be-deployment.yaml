@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quant-ux-backend
+  labels:
+    app: quant-ux-backend
+    app.kubernetes.io/component: quant-ux-backend
+    app.kubernetes.io/instance: quant-ux-backend
+    app.kubernetes.io/name: quant-ux-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quant-ux-backend
+      deploymentconfig: quant-ux-backend
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: quant-ux-backend
+        deploymentconfig: quant-ux-backend
+    spec:
+      containers:
+        - env:
+            - name: QUX_AUTH_SERVICE
+              value: qux
+            - name: QUX_HTTP_HOST
+              value: http://quant-ux-frontend:8082
+            - name: QUX_HTTP_PORT
+              value: "8080"
+            - name: QUX_IMAGE_FOLDER_APPS
+              value: /app-data/qux-image-apps
+            - name: QUX_IMAGE_FOLDER_USER
+              value: /app-data/qux-images
+            - name: QUX_JWT_PASSWORD
+              value: 6472213BBFB54EB91278BF411C9FC
+            - name: QUX_KEYCLOAK_REALM
+            - name: QUX_KEYCLOAK_SERVER
+            - name: QUX_MAIL_HOST
+              value: smtp.ethereal.email
+            - name: QUX_MAIL_PASSWORD
+              value: UmA7RukSJvQ2FYjKcx
+            - name: QUX_MAIL_USER
+              value: ron59@ethereal.email
+            - name: QUX_MONGO_CONNECTION_STRING
+              value: mongodb://mongo:27017
+            - name: QUX_MONGO_DB_NAME
+              value: quantux
+            - name: QUX_MONGO_TABLE_PREFIX
+              value: quantux
+            - name: QUX_USER_ALLOWED_DOMAINS
+              value: '*'
+            - name: QUX_USER_ALLOW_SIGNUP
+              value: "true"
+            - name: TZ
+              value: Brazil/East
+          image: klausenschaefersinho/quant-ux-backend
+          name: quant-ux-backend
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources: {}
+          volumeMounts:
+            - mountPath: /app-data
+              name: qux-be-claim0
+      restartPolicy: Always
+      volumes:
+        - name: qux-be-claim0
+          persistentVolumeClaim:
+            claimName: qux-be-claim0
+status: {}

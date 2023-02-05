@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quant-ux-frontend
+  labels:
+    app: quant-ux-frontend
+    app.kubernetes.io/component: quant-ux-frontend
+    app.kubernetes.io/instance: quant-ux-frontend
+    app.kubernetes.io/name: quant-ux-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quant-ux-frontend
+      deploymentconfig: quant-ux-frontend
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: quant-ux-frontend
+        deploymentconfig: quant-ux-frontend
+    spec:
+      containers:
+        - env:
+            - name: QUX_AUTH
+              value: qux
+            - name: QUX_KEYCLOAK_CLIENT
+            - name: QUX_KEYCLOAK_REALM
+            - name: QUX_KEYCLOAK_URL
+            - name: QUX_PROXY_URL
+              value: http://quant-ux-backend:8080
+            - name: QUX_WS_URL
+              value: ws://quant-ux.local/ws
+          image: klausenschaefersinho/quant-ux
+          name: quant-ux-frontend
+          ports:
+            - containerPort: 8082
+          resources: {}
+      restartPolicy: Always
+status: {}

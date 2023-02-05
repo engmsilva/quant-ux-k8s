@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: qux-be-claim0
+  labels:
+    app: quant-ux-backend
+    app.kubernetes.io/component: quant-ux-backend
+    app.kubernetes.io/instance: quant-ux-backend
+    app.kubernetes.io/name: quant-ux-backend
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: standard
+  resources:
+    requests:
+      storage: 1Gi
+status: {}
