@@ -57,6 +57,13 @@ Add the IP from the **ADDRESS** column in the `/etc/hosts` file to resolve name 
 ```
 192.168.49.2 quant-ux.local
 ```
+
+Restart the networking service:
+
+```
+sudo service network-manager restart
+```
+
 Once all steps are completed Quant-UX will be available locally at the url [http://quant-ux.local](http://quant-ux.local).
 
 ## Email Service
