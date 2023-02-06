@@ -1,7 +1,11 @@
 # Quant-UX k8s with Nginx Ingress
 This repository contains manifest files for deploying the beautiful prototyping application [Quant-UX](https://github.com/KlausSchaefers/quant-ux) on a k8s cluster.
 
-These manifest files can be deployed in local development environment using [minikube](https://minikube.sigs.k8s.io/)
+These manifest files can be deployed in local development environment using [minikube](https://minikube.sigs.k8s.io/).
+
+# Kubernetes Architecture
+
+![alt text](./static/architecture_ks8.png)
 
 ## Local Development Environment Requirements
 
@@ -15,7 +19,7 @@ The development environment was built on a Linux distro based on **Ubuntu 18.04 
 
 ## Deploying
 
-After installing the Docker, Minikube and Kubectl applications, from a terminal with administrator access (but not logged in as root), run:
+After installing the `Docker`, `Minikube` and `Kubectl` applications, from a terminal with administrator access (but not logged in as root), run to create a cluster locally:
 
 ```
 minikube start
