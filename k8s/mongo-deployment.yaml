@@ -1,18 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mongo
+  name: quant-ux-mongo
   labels:
-    app: mongo
-    app.kubernetes.io/component: mongo
-    app.kubernetes.io/instance: mongo
-    app.kubernetes.io/name: mongo
+    app: quant-ux-mongo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mongo
-      deploymentconfig: mongo
+      app: quant-ux-mongo
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -21,22 +17,19 @@ spec:
   template:
     metadata:
       labels:
-        app: mongo
-        deploymentconfig: mongo
+        app: quant-ux-mongo
     spec:
       containers:
         - image: mongo
-          name: mongo
+          name: quant-ux-mongo
           ports:
             - containerPort: 27017
               protocol: TCP
-          resources: {}
           volumeMounts:
             - mountPath: /data/db
-              name: mongo-claim0
+              name: quant-ux-mongo-claim0
       restartPolicy: Always
       volumes:
-        - name: mongo-claim0
+        - name: quant-ux-mongo-claim0
           persistentVolumeClaim:
-            claimName: mongo-claim0
-status: {}
+            claimName: quant-ux-mongo-claim0

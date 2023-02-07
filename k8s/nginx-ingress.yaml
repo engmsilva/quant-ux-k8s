@@ -18,6 +18,6 @@ spec:
             path: /ws
             backend:
               service:
-                name: qux-ws
+                name: quant-ux-websocket
                 port:
                   number: 8086

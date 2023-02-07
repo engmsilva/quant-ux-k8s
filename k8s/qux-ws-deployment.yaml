@@ -1,24 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: qux-ws
+  name: quant-ux-websocket
   labels:
-    app: qux-ws
-    app.kubernetes.io/component: qux-ws
-    app.kubernetes.io/instance: qux-ws
-    app.kubernetes.io/name: qux-ws
+    app: quant-ux-websocket
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: qux-ws
-      deploymentconfig: qux-ws
-  strategy: {}
+      app: quant-ux-websocket
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
   template:
     metadata:
       labels:
-        app: qux-ws
-        deploymentconfig: qux-ws
+        app: quant-ux-websocket
     spec:
       containers:
         - env:
@@ -30,6 +29,4 @@ spec:
           name: quant-ux-websocket-server
           ports:
             - containerPort: 8086
-          resources: {}
       restartPolicy: Always
-status: {}

@@ -1,12 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: qux-ws
+  name: quant-ux-websocket
   labels:
-    app: qux-ws
-    app.kubernetes.io/component: qux-ws
-    app.kubernetes.io/instance: qux-ws
-    app.kubernetes.io/name: qux-ws
+    app: quant-ux-websocket
 spec:
   ports:
     - name: "8086-tcp"
@@ -14,7 +11,4 @@ spec:
       port: 8086
       targetPort: 8086
   selector:
-    app: qux-ws
-    deploymentconfig: qux-ws
-status:
-  loadBalancer: {}
+    app: quant-ux-websocket

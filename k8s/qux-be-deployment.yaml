@@ -4,9 +4,6 @@ metadata:
   name: quant-ux-backend
   labels:
     app: quant-ux-backend
-    app.kubernetes.io/component: quant-ux-backend
-    app.kubernetes.io/instance: quant-ux-backend
-    app.kubernetes.io/name: quant-ux-backend
 spec:
   replicas: 1
   selector:
@@ -47,7 +44,7 @@ spec:
             - name: QUX_MAIL_USER
               value: ron59@ethereal.email
             - name: QUX_MONGO_CONNECTION_STRING
-              value: mongodb://mongo:27017
+              value: mongodb://quant-ux-mongo:27017
             - name: QUX_MONGO_DB_NAME
               value: quantux
             - name: QUX_MONGO_TABLE_PREFIX
@@ -63,13 +60,11 @@ spec:
           ports:
             - containerPort: 8080
               protocol: TCP
-          resources: {}
           volumeMounts:
             - mountPath: /app-data
-              name: qux-be-claim0
+              name: quant-ux-backend-claim0
       restartPolicy: Always
       volumes:
-        - name: qux-be-claim0
+        - name: quant-ux-backend-claim0
           persistentVolumeClaim:
-            claimName: qux-be-claim0
-status: {}
+            claimName: quant-ux-backend-claim0

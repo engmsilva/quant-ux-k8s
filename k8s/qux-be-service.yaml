@@ -4,9 +4,6 @@ metadata:
   name: quant-ux-backend
   labels:
     app: quant-ux-backend
-    app.kubernetes.io/component: quant-ux-backend
-    app.kubernetes.io/instance: quant-ux-backend
-    app.kubernetes.io/name: quant-ux-backend
 spec:
   ports:
     - name: "8080-tcp"
@@ -15,6 +12,3 @@ spec:
       targetPort: 8080
   selector:
     app: quant-ux-backend
-    deploymentconfig: quant-ux-backend
-status:
-  loadBalancer: {}
