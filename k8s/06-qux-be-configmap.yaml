@@ -1,0 +1,22 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: quant-ux-be-configmap
+  namespace: quant-ux
+data:
+  QUX_AUTH_SERVICE: qux
+  QUX_HTTP_HOST: http://quant-ux-frontend:8082
+  QUX_HTTP_PORT: "8080"
+  QUX_IMAGE_FOLDER_APPS: /app-data/qux-image-apps
+  QUX_IMAGE_FOLDER_USER: /app-data/qux-images
+  QUX_KEYCLOAK_REALM: ""
+  QUX_KEYCLOAK_SERVER: ""
+  QUX_MAIL_HOST: smtp.ethereal.email
+  QUX_MAIL_USER: lily.gleason@ethereal.email
+  QUX_MAIL_PASSWORD: "epWxeJPEptDcXHNDm1"
+  QUX_MONGO_CONNECTION_STRING: mongodb://quant-ux-mongo:27017
+  QUX_MONGO_DB_NAME: quantux
+  QUX_MONGO_TABLE_PREFIX: quantux
+  QUX_USER_ALLOWED_DOMAINS: '*'
+  QUX_USER_ALLOW_SIGNUP: "true"
+  TZ: Brazil/East

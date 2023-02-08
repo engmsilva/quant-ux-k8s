@@ -44,10 +44,20 @@ cd quant-ux-k8s
 kubectl apply -f ./k8s
 ```
 
+Run the `Minikube Dashboard`, select the `quant-ux` namespace in the top bar and then the `Pods` menu in the left side menu bar. Wait until all `Pods` are in `Running` status:
+
+```
+minikube dashboard
+```
+
+![alt text](./static/minikube-dashboard.png)
+
+
 Check the local IP that is being routed to the cluster services:
 
 ```
-kubectl get ingress
+kubectl get ingress --namespace=quant-ux
+
 NAME            CLASS     HOSTS            ADDRESS        PORTS     AGE
 nginx-ingress   nginx     quant-ux.local   192.168.49.2   80        13h
 ```
@@ -79,4 +89,14 @@ Email address: ron59@ethereal.email
 Password:UmA7RukSJvQ2FYjKcx
 ```
 
+**note:** The fake Etheral SMTP service account is temporary, you may need to register a new account and change the information in the `06-qux-be-configmap.yaml` manifest.
+
+## Secrets
+
+The information passed in the secret manifest must be in `Base64` format:
+
+```
+echo -n "stringtoencode" | base64
+```
+**note:** Quant-UX does not decode the secret manifest information. This manifest has been added to the repository with just an environment variable that doesn't need decoding just to exemplify good practices for using [security sensitive information in k8s](https://kubernetes.io/docs/concepts/configuration/secret/).
 

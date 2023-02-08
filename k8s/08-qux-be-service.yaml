@@ -2,13 +2,16 @@ apiVersion: v1
 kind: Service
 metadata:
   name: quant-ux-backend
+  namespace: quant-ux
   labels:
     app: quant-ux-backend
 spec:
+  selector:
+    app: quant-ux-backend
   ports:
     - name: "8080-tcp"
       protocol: TCP
       port: 8080
       targetPort: 8080
-  selector:
-    app: quant-ux-backend
+  internalTrafficPolicy: Local
+  type: ClusterIP

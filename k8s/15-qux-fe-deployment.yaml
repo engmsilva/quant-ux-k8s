@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: quant-ux-frontend
+  namespace: quant-ux
   labels:
     app: quant-ux-frontend
 spec:
@@ -20,16 +21,9 @@ spec:
         app: quant-ux-frontend
     spec:
       containers:
-        - env:
-            - name: QUX_AUTH
-              value: qux
-            - name: QUX_KEYCLOAK_CLIENT
-            - name: QUX_KEYCLOAK_REALM
-            - name: QUX_KEYCLOAK_URL
-            - name: QUX_PROXY_URL
-              value: http://quant-ux-backend:8080
-            - name: QUX_WS_URL
-              value: ws://quant-ux.local/ws
+        - envFrom:
+          - configMapRef:
+              name: quant-ux-fe-configmap
           image: klausenschaefersinho/quant-ux
           name: quant-ux-frontend
           ports:

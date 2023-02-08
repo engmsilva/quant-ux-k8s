@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: quant-ux-websocket
+  namespace: quant-ux
   labels:
     app: quant-ux-websocket
 spec:
@@ -20,11 +21,9 @@ spec:
         app: quant-ux-websocket
     spec:
       containers:
-        - env:
-            - name: QUX_SERVER
-              value: http://quant-ux-backend:8080/
-            - name: QUX_SERVER_PORT
-              value: "8086"
+        - envFrom:
+          - configMapRef:
+              name: quant-ux-ws-configmap
           image: klausenschaefersinho/quant-ux-websocket
           name: quant-ux-websocket-server
           ports:

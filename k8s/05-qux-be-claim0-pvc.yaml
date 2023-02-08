@@ -2,6 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: quant-ux-backend-claim0
+  namespace: quant-ux
   labels:
     app: quant-ux-backend
 spec:

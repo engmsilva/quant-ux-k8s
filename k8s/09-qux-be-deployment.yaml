@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quant-ux-backend
+  namespace: quant-ux
+  labels:
+    app: quant-ux-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quant-ux-backend
+      deploymentconfig: quant-ux-backend
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: quant-ux-backend
+        deploymentconfig: quant-ux-backend
+    spec:
+      containers:
+          - envFrom:
+            - configMapRef:
+                name: quant-ux-be-configmap
+            - secretRef:
+                name: quant-ux-be-secret
+            image: klausenschaefersinho/quant-ux-backend
+            name: quant-ux-backend
+            ports:
+              - containerPort: 8080
+                protocol: TCP
+            volumeMounts:
+              - mountPath: /app-data
+                name: quant-ux-backend-claim0
+      restartPolicy: Always
+      volumes:
+        - name: quant-ux-backend-claim0
+          persistentVolumeClaim:
+            claimName: quant-ux-backend-claim0
