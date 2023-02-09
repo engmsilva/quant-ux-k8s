@@ -44,14 +44,16 @@ cd quant-ux-k8s
 kubectl apply -f ./k8s
 ```
 
-Run the `Minikube Dashboard`, select the `quant-ux` namespace in the top bar and then the `Pods` menu in the left side menu bar. Wait until all `Pods` are in `Running` status:
+Wait until all `Pods` are in `Running` status:
 
 ```
-minikube dashboard
+kubectl get pods --namespace=quant-ux
+
+quant-ux-backend-f9c875d99-h8h48      1/1       Running   0          78m
+quant-ux-frontend-5dc4d78f84-t7m9f    1/1       Running   0          78m
+quant-ux-mongo-5446f69975-ctcjk       1/1       Running   0          78m
+quant-ux-websocket-77bcfd665f-bkncz   1/1       Running   0          78m
 ```
-
-![alt text](./static/minikube-dashboard.png)
-
 
 Check the local IP that is being routed to the cluster services:
 
@@ -85,18 +87,23 @@ In the manifest file, the email service [ethereal](https://ethereal.email) was c
 Messages delivered by Quant-UX can be viewed [here](https://ethereal.email/login), using the credentials below:
 
 ```
-Email address: ron59@ethereal.email
-Password:UmA7RukSJvQ2FYjKcx
+Email address: lily.gleason@ethereal.email
+Password: epWxeJPEptDcXHNDm1
 ```
 
 **note:** The fake Etheral SMTP service account is temporary, you may need to register a new account and change the information in the `06-qux-be-configmap.yaml` manifest.
 
 ## Secrets
 
-The information passed in the secret manifest must be in `Base64` format:
+The secret manifest contains sensitive application security information. Change to best suit your project using the [best practices for storing secrets ](https://kubernetes.io/docs/concepts/configuration/secret/ ).
+
+
+## Minikube Dashboard
+
+The k8s cluster can be managed using the Minikube UI.
 
 ```
-echo -n "stringtoencode" | base64
+minikube dashboard
 ```
-**note:** Quant-UX does not decode the secret manifest information. This manifest has been added to the repository with just an environment variable that doesn't need decoding just to exemplify good practices for using [security sensitive information in k8s](https://kubernetes.io/docs/concepts/configuration/secret/).
 
+![alt text](./static/minikube-dashboard.png)

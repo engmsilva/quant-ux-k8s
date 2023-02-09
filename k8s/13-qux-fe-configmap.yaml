@@ -4,9 +4,9 @@ metadata:
   name: quant-ux-fe-configmap
   namespace: quant-ux
 data:
-  QUX_AUTH: qux
+  QUX_AUTH: qux # authentication provider. Quant-UX currently supports it's own IAM(qux) and Keycloak.
   QUX_KEYCLOAK_CLIENT: ""
   QUX_KEYCLOAK_REALM: ""
   QUX_KEYCLOAK_URL: ""
-  QUX_PROXY_URL: http://quant-ux-backend:8080
-  QUX_WS_URL: ws://quant-ux.local/ws
+  QUX_PROXY_URL: http://quant-ux-backend:8080 # use the same name and port as the backend service
+  QUX_WS_URL: ws://quant-ux.local/ws # change to the same domain that the external dns server is resolving to the external Ingress IP.

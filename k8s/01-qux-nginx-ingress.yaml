@@ -5,7 +5,7 @@ metadata:
   namespace: quant-ux
 spec:
   rules:
-    - host: quant-ux.local
+    - host: quant-ux.local # change to the same domain that the external dns server is resolving to the external Ingress IP.
       http:
         paths:
           - pathType: Prefix

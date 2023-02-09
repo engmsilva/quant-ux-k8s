@@ -4,19 +4,17 @@ metadata:
   name: quant-ux-be-configmap
   namespace: quant-ux
 data:
-  QUX_AUTH_SERVICE: qux
-  QUX_HTTP_HOST: http://quant-ux-frontend:8082
-  QUX_HTTP_PORT: "8080"
-  QUX_IMAGE_FOLDER_APPS: /app-data/qux-image-apps
-  QUX_IMAGE_FOLDER_USER: /app-data/qux-images
+  QUX_AUTH_SERVICE: qux # authentication provider. Quant-UX currently supports it's own IAM(qux) and Keycloak.
+  QUX_HTTP_HOST: http://quant-ux.local # this is the URL included in the mails, e.g. password resets. Change to the same domain that the external dns server is resolving to the external Ingress IP.
+  QUX_HTTP_PORT: "8080" # This is the port the backend will use
+  QUX_IMAGE_FOLDER_APPS: /app-data/qux-image-apps # this folder should mapped in the volume
+  QUX_IMAGE_FOLDER_USER: /app-data/qux-images # this folder should mapped in the volume
   QUX_KEYCLOAK_REALM: ""
-  QUX_KEYCLOAK_SERVER: ""
-  QUX_MAIL_HOST: smtp.ethereal.email
-  QUX_MAIL_USER: lily.gleason@ethereal.email
-  QUX_MAIL_PASSWORD: "epWxeJPEptDcXHNDm1"
-  QUX_MONGO_CONNECTION_STRING: mongodb://quant-ux-mongo:27017
-  QUX_MONGO_DB_NAME: quantux
-  QUX_MONGO_TABLE_PREFIX: quantux
-  QUX_USER_ALLOWED_DOMAINS: '*'
-  QUX_USER_ALLOW_SIGNUP: "true"
-  TZ: Brazil/East
+  QUX_KEYCLOAK_SERVER: "" # just the keycloak host & port
+  QUX_MAIL_HOST: smtp.ethereal.email # this should be your smtp host address
+  QUX_MONGO_CONNECTION_STRING: mongodb://quant-ux-mongo:27017 # use the same name and port as the mongoDB service
+  QUX_MONGO_DB_NAME: quantux # the database / collection name in mongodb
+  QUX_MONGO_TABLE_PREFIX: quantux # table / document prefix in mongodb
+  QUX_USER_ALLOWED_DOMAINS: '*' # comma separated list of domains, e.g. 'my-server.com' or '*' for all
+  QUX_USER_ALLOW_SIGNUP: "true" # set the false to not allow users to signup
+  TZ: Brazil/East # change to your timezone

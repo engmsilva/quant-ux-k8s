@@ -4,5 +4,5 @@ metadata:
   name: quant-ux-ws-configmap
   namespace: quant-ux
 data:
-  QUX_SERVER: http://quant-ux-backend:8080/
-  QUX_SERVER_PORT: "8086"
+  QUX_SERVER: http://quant-ux-backend:8080/ # use the same name and port as the backend service
+  QUX_SERVER_PORT: "8086" # This is the port the websocket will use
