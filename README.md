@@ -49,10 +49,11 @@ Wait until all `Pods` are in `Running` status:
 ```
 kubectl get pods --namespace=quant-ux
 
-quant-ux-backend-f9c875d99-h8h48      1/1       Running   0          78m
-quant-ux-frontend-5dc4d78f84-t7m9f    1/1       Running   0          78m
-quant-ux-mongo-5446f69975-ctcjk       1/1       Running   0          78m
-quant-ux-websocket-77bcfd665f-bkncz   1/1       Running   0          78m
+NAME                                  READY     STATUS    RESTARTS   AGE
+quant-ux-backend-f9c875d99-9cmsn      1/1       Running   0          8m55s
+quant-ux-frontend-5dc4d78f84-gtgqx    1/1       Running   0          8m55s
+quant-ux-mongo-5446f69975-72jxn       1/1       Running   0          8m55s
+quant-ux-websocket-77bcfd665f-xt45s   1/1       Running   0          8m55s
 ```
 
 Check the local IP that is being routed to the cluster services:
