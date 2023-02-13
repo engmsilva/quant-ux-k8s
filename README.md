@@ -1,4 +1,4 @@
-# Quant-UX k8s with Nginx Ingress
+# Deploying Quant-UX on Kubernetes with Minikube
 This repository contains manifest files for deploying the beautiful prototyping application [Quant-UX](https://github.com/KlausSchaefers/quant-ux) on a k8s cluster.
 
 These manifest files can be deployed in local development environment using [minikube](https://minikube.sigs.k8s.io/).
@@ -25,7 +25,7 @@ After installing the `Docker`, `Minikube` and `Kubectl` applications, from a ter
 minikube start
 ```
 
-Enable ingress addon:
+Enable ingress addon to manage external access to cluster services:
 
 ```
 minikube addons enable ingress
